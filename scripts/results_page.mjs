@@ -17,7 +17,7 @@ const TITLE_RIVALS = ["exa", "parallel", "tavily", "brave"];
 const PROSE_NAMES = new Map([
   ["exa", "Exa"], ["exa-instant", "Exa Instant"], ["brave", "Brave"],
   ["brave-llmcontext", "Brave LLM Context"], ["parallel", "Parallel"],
-  ["parallel-turbo", "Parallel Turbo"], ["perplexity", "Perplexity"],
+  ["parallel-turbo", "Parallel Turbo"], ["parallel-fast", "Parallel Fast"], ["perplexity", "Perplexity"],
   ["perplexity-fast", "Perplexity Fast"], ["tavily", "Tavily"], ["linkup", "Linkup"],
   ["you", "You.com"], ["firecrawl", "Firecrawl"], ["tinyfish", "TinyFish"], ["kagi", "Kagi"],
   ["jina", "Jina"], ["deepseek", "DeepSeek"], ["octen", "Octen"], ["claude-search", "Claude web search"],

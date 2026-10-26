@@ -969,7 +969,8 @@
       <tr><td>brave-llmcontext</td><td>Brave POST /llm/context</td><td>q = query text clipped to 75 words / 600 chars; country=us, search_lang=en; after:/before: → freshness=YYYY-MM-DDtoYYYY-MM-DD; per-URL snippets joined with newlines and clipped client-side to the 2,000-char budget, published date from the sources map</td></tr>
       <tr><td>exa</td><td>Exa POST /search</td><td>type=auto, numResults=k, contents.highlights.maxCharacters=2000; site: → includeDomains, after:/before: → startPublishedDate/endPublishedDate (full-day UTC bounds)</td></tr>
       <tr><td>exa-instant</td><td>Exa POST /search</td><td>same as exa but type=instant</td></tr>
-      <tr><td>parallel</td><td>Parallel POST /v1/search</td><td>mode=basic, search_queries=[query text], advanced_settings.max_results=k; site: → source_policy.include_domains, after: → source_policy.after_date (before: has no mapping and is dropped)</td></tr>
+      <tr><td>parallel</td><td>Parallel POST /v1/search</td><td>mode=advanced, search_queries=[query text], advanced_settings.max_results=k; site: → source_policy.include_domains, after: → source_policy.after_date (before: has no mapping and is dropped)</td></tr>
+      <tr><td>parallel-fast</td><td>Parallel POST /v1/search</td><td>same as parallel but mode=fast</td></tr>
       <tr><td>parallel-turbo</td><td>Parallel POST /v1/search</td><td>same as parallel but mode=turbo</td></tr>
       <tr><td>perplexity</td><td>Perplexity POST /search</td><td>max_results=min(k,20), search_context_size=low; site: → search_domain_filter, after:/before: → search_after_date_filter/search_before_date_filter (MM/DD/YYYY)</td></tr>
       <tr><td>perplexity-fast</td><td>Perplexity POST /search</td><td>same as perplexity but search_type=fast (perplexity leaves the field unset, so it takes the API default web)</td></tr>
@@ -1042,7 +1043,7 @@ function registerEngines(names) {
 }
 
 registerEngines(["keenable-realtime", "google", "bing", "brave", "brave-llmcontext",
-  "exa", "exa-instant", "parallel", "parallel-turbo", "perplexity-fast", "perplexity", "tavily", "linkup", "you", "firecrawl",
+  "exa", "exa-instant", "parallel", "parallel-turbo", "parallel-fast", "perplexity-fast", "perplexity", "tavily", "linkup", "you", "firecrawl",
   "tinyfish", "kagi", "jina", "context", "deepseek", "octen", "claude-search", "chatgpt-search"]);
 
 const SERIES_COUNT = 23;
@@ -2003,6 +2004,7 @@ const PRICES = new Map([
   ["exa-instant", { usd: 7.00, plan: "pay-as-you-go" }],
   ["parallel", { usd: 5.00, plan: "pay-as-you-go" }],
   ["parallel-turbo", { usd: 1.00, plan: "pay-as-you-go" }],
+  ["parallel-fast", { usd: 1.00, plan: "pay-as-you-go" }],
   ["perplexity", { usd: 5.00, plan: "flat rate" }],
   ["perplexity-fast", { usd: 1.00, plan: "fast search — $1 / 1k requests" }],
   ["tavily", { usd: 5.00, plan: "Growth — $500/mo / 100k credits" }],
